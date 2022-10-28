@@ -1,7 +1,10 @@
+
 /* eslint-disable @next/next/no-img-element */
 
-import type { NextPage } from "next";
-import { BaseLayout, NftList } from "../components";
+import type { NextPage } from 'next';
+import { BaseLayout, NftList } from '@ui';
+import nfts from "../content/meta.json";
+import { NftMeta } from '@_types/nft';
 
 const Home: NextPage = () => {
   return (
@@ -12,18 +15,18 @@ const Home: NextPage = () => {
         </div>
         <div className="relative">
           <div className="text-center">
-            <h2 className="text-3xl tracking-tight font-extrabold text-gray-900 sm:text-4xl">
-              Amazing Creatures NFTs
-            </h2>
+            <h2 className="text-3xl tracking-tight font-extrabold text-gray-900 sm:text-4xl">Amazing Creatures NFTs</h2>
             <p className="mt-3 max-w-2xl mx-auto text-xl text-gray-500 sm:mt-4">
               Mint a NFT to get unlimited ownership forever!
             </p>
           </div>
-          <NftList />
+          <NftList
+            nfts={nfts as NftMeta[]}
+          />
         </div>
       </div>
     </BaseLayout>
-  );
-};
+  )
+}
 
-export default Home;
+export default Home
