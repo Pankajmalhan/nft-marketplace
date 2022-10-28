@@ -1,7 +1,9 @@
+
 import { FunctionComponent } from "react";
 import Navbar from "../navbar";
 
-const BaseLayout: FunctionComponent = ({ children }) => {
+const BaseLayout: FunctionComponent = ({children}) => {
+
   return (
     <>
       <Navbar />
@@ -11,7 +13,7 @@ const BaseLayout: FunctionComponent = ({ children }) => {
         </div>
       </div>
     </>
-  );
-};
+  )
+}
 
 export default BaseLayout;
