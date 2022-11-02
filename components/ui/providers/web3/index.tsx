@@ -13,6 +13,7 @@ import {
 } from "./utils";
 import { ethers } from "ethers";
 import { MetaMaskInpageProvider } from "@metamask/providers";
+import { NftMarketContract } from "@_types/nftMarketContract";
 
 const pageReload = () => {
   window.location.reload();
@@ -48,12 +49,15 @@ const Web3Provider: FunctionComponent = ({ children }) => {
         );
         const contract = await loadContract("NftMarket", provider);
 
+        const signer = provider.getSigner();
+        const signedContract = contract.connect(signer);
+
         setGlobalListeners(window.ethereum);
         setWeb3Api(
           createWeb3State({
             ethereum: window.ethereum,
             provider,
-            contract,
+            contract: signedContract as unknown as NftMarketContract,
             isLoading: false,
           })
         );
