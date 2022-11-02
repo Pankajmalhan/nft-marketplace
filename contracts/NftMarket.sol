@@ -92,16 +92,22 @@ contract NftMarket is ERC721URIStorage, Ownable {
     }
 
     function getOwnedNfts() public view returns (NftItem[] memory) {
+        if(msg.sender!=address(0)){
         uint256 ownedItemsCount = ERC721.balanceOf(msg.sender);
         NftItem[] memory items = new NftItem[](ownedItemsCount);
 
         for (uint256 i = 0; i < ownedItemsCount; i++) {
             uint256 tokenId = tokenOfOwnerByIndex(msg.sender, i);
-            NftItem storage item = _idToNftItem[tokenId];
+            NftItem memory item = _idToNftItem[tokenId];
+            item.creator=address(msg.sender);
             items[i] = item;
         }
 
         return items;
+        }else{
+             NftItem[] memory items = new NftItem[](0);
+             return items;
+        }
     }
 
     function mintToken(string memory tokenURI, uint256 price)
