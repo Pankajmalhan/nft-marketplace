@@ -3,19 +3,28 @@ import { useHooks } from "@ui/providers/web3";
 
 
 export const useAccount = () => {
-  const hooks = useHooks();
-  const swrRes = hooks.useAccount();
+    const hooks = useHooks();
+    const swrRes = hooks.useAccount();
 
-  return {
-    account: swrRes
-  }
+    return {
+        account: swrRes
+    }
 }
 
 export const useNetwork = () => {
     const hooks = useHooks();
     const swrRes = hooks.useNetwork();
-  
+
     return {
-      network: swrRes
+        network: swrRes
     }
-  }
+}
+
+export const useListedNfts = () => {
+    const hooks = useHooks();
+    const swrRes = hooks.useListedNfts();
+
+    return {
+        nfts: swrRes
+    }
+}
