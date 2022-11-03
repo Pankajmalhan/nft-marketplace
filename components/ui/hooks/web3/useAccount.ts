@@ -55,7 +55,6 @@ export const hookFactory: AccountHookFactory = ({provider, ethereum, isLoading})
     }
   }
 
-  console.log({ethereum})
   return {
     ...swr,
     data,
